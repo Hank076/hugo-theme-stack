@@ -36,6 +36,14 @@
                 </time>
             </div>
         {{ end }}
+        {{- if ne .Lastmod .Date -}}
+            <div>
+                {{ partial "helper/icon" "editdate" }}
+                <time class="article-time--updated">
+                    {{ T "article.lastUpdatedOn" }} {{ .Lastmod.Format ( or .Site.Params.dateFormat.lastUpdated "Jan 02, 2006 15:04 MST" ) }}
+                </time>
+            </div>
+        {{- end -}}
 
         {{ if $showReadingTime }}
             <div>
